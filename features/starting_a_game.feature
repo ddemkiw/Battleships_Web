@@ -11,10 +11,12 @@ Feature: Starting the game
   Scenario: Register Player 1
   	Given I am on /new_game
   	When I fill in "player1" with "Jake" 
+    And I press "submit"
   	Then I should see "Player1 has been registered"
 
   Scenario: Unable to Register Player 1
-  	Given I am on new_game
-  	When I fill in "player1" with "^$"
-  	Then I should see "Player1 is not valid. Please try again."
+  	Given I am on /new_game
+  	When I fill in "player1" with ""
+    And I press "submit"
+  	Then I should see "Player 1, enter your name:"
 
