@@ -15,6 +15,7 @@ class BattleShips < Sinatra::Base
   post '/form' do 
     @player1 = params[:player1]
     @player2 = params[:player2]
+    puts params.inspect
     erb :new_game
   end
 

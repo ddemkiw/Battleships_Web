@@ -2,22 +2,21 @@
 
 <div>
 
-  <% if !@player1.nil? %>
-     Player1 has been registered
-  <% else %>
-    Player 1, enter your name:
+  <% if @player1.nil? %>
+  Player 1, enter your name:
 	<form action="/form" method="post">
 	  <input type="text" name="player1">
 	  <input type="submit">
-	</form>
-  <% end %>
-
-  <% if @player1 %>
-  	Input player 2's name:
+  <%elsif @player2.nil? %>
+    <p>Player1 has been registered </p>
+    Input player 2's name:
   	<form action="/form" method="post">
      <input type="text" name="player2">
+     <input type="hidden" name="player1" value=<%= @player1 %>>
      <input type="submit">
     </form>
+    <% else %> 
+      <p>Start New Game! <p>
   <% end %>
 
 
