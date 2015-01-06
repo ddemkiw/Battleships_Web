@@ -1,5 +1,18 @@
+<!-- we are going to take player 1's name. if this is done, set player 2 name.-->
+
 <div>
- What's your name?
- <input type="text" name="name">
- <input type="submit">
+  What's your name?
+   Input player 1's name:
+   <form action="/form" method="post">
+     <input type="text" name="player1">
+     <input type="submit">
+   </form>
+
+  <% if @player1 %>
+  	Input player 2's name:
+  	<form action="/form" method="post">
+     <input type="text" name="player2">
+     <input type="submit">
+    </form>
+  <% end %>
 </div>
