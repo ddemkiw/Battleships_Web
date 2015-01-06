@@ -9,7 +9,7 @@ Feature: Starting the game
     Then I should see "Player 1, enter your name:"
 
   Scenario: Register Player 1
-  	Given I am on new_game
+  	Given I am on /new_game
   	When I fill in "player1" with "Jake" 
   	Then I should see "Player1 has been registered"
 

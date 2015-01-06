@@ -2,12 +2,15 @@
 
 <div>
 
-
-   Player 1, enter your name:
-   <form action="/form" method="post">
-     <input type="text" name="player1">
-     <input type="submit">
-   </form>
+  <% if !@player1.nil? %>
+     Player1 has been registered
+  <% else %>
+    Player 1, enter your name:
+	<form action="/form" method="post">
+	  <input type="text" name="player1">
+	  <input type="submit">
+	</form>
+  <% end %>
 
   <% if @player1 %>
   	Input player 2's name:
@@ -16,4 +19,6 @@
      <input type="submit">
     </form>
   <% end %>
+
+
 </div>
