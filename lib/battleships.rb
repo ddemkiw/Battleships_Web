@@ -1,9 +1,9 @@
 require 'sinatra/base'
-require 'game'
-require 'player'
-require 'ship'
-require 'board'
-require 'cell'
+require_relative 'game'
+require_relative 'player'
+require_relative 'ship'
+require_relative 'board'
+require_relative 'cell'
 
 class BattleShips < Sinatra::Base
 

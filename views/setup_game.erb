@@ -1,1 +1,9 @@
-<p>Welcome to the game, <%= session[:player1] %></p>
+<p>Welcome to the game!</p>
+<p> Player 1 is : <%= session[:player1] %></p>
+<p> Player 2 is : <%= session[:player2] %></p>
+<p> Each player has a fleet of 5 ships including </p>
+<ul>
+	<% @fleet1.each do |ship| %>	
+	<li><%= "#{ship.name.first}, size: #{ship.size}" %></li>
+	<% end %>
+</ul> 
