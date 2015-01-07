@@ -7,6 +7,8 @@ require 'cell'
 
 class BattleShips < Sinatra::Base
 
+  enable :sessions
+
   set :views, File.expand_path('../../views', __FILE__)
 
   # routes 
@@ -20,15 +22,15 @@ class BattleShips < Sinatra::Base
   end
 
   post '/form' do 
-    @player1_name = params[:player1]
-    @player2_name = params[:player2]
+    @player1_name = (session[:player1] = params[:player1])
+    @player2_name = (session[:player2] = params[:player2])
     erb :new_game
   end
 
-  get '/setup_game' do 
+  get '/setup_game' do # rename to play game
     @game = Game.new
-    setup(@player1, @player1_name)
-    setup(@player2, @player2_name)
+    setup(@player1, session[:player1])
+    setup(@player2, session[:player2])
     erb :setup_game
   end
 
