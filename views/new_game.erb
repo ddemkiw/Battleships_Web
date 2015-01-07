@@ -7,16 +7,16 @@
 	<form action="/form" method="post">
 	<input type="text" name="player1">
 	<button type="submit">submit</button>
-  <% elsif @player2.nil? %>
+  <% elsif @player2.nil? || @player2.empty?%>
     <p>Player1 has been registered</p>
     Input player 2's name:
   	<form action="/form" method="post">
-    <input type="text" name="player2">
+    <input type="text" name="player2" value=<% @player2 %>>
     <input type="hidden" name="player1" value=<%= @player1 %>>
     <button type="submit">submit</button>
     </form>
   <% else %> 
-    <p>Start Your Game!</p>
+    <a href="/setup_game">Start Your Game!</a>
   <% end %>
 
 </div>
