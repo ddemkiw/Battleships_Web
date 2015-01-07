@@ -5,6 +5,8 @@ Feature: Setting up a game
 
 	Scenario: Set up Game
 		Given I am on /setup_game
-    	Then I should see "HERP DERP" 
+    	Then I should see "Welcome to the game" 
 
-    Scenario: 
+    Scenario: Greeting a player
+        Given there is a game with a player called "Jake" and field called "player1"
+        Then I should see "Welcome to the game, Jake"
