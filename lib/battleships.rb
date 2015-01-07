@@ -27,6 +27,10 @@ class BattleShips < Sinatra::Base
     erb :new_game
   end
 
+#convert ship from string to object
+#coords from string to symbo
+#convert orientation to symbo (possible drop down)
+#use add_ship function from game  
   post '/set_ships' do 
     session[:ship] = params[:ship]
     session[:coord] = params[:coord]
@@ -39,8 +43,14 @@ class BattleShips < Sinatra::Base
     @game = Game.new
     setup(@player1, session[:player1])
     setup(@player2, session[:player2])
-    puts params
-    @ship = @fleet1.select { |ship| ship.name == @ship }
+    @ship = @fleet1.select { |ship| ship.name.first == session[:ship]  }
+    puts @ship.inspect
+    @coord = session[:coord]
+    x = @coord.to_s.to_sym
+    if @ship
+      p @board1.place(@ship, x)
+    end
+
     erb :setup_game
   end
 

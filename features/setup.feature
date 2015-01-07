@@ -35,5 +35,5 @@ Feature: Setting up a game
 	    And I fill in "ship" with "Battleship"
 	    And I fill in "coord" with "A1"
 	    And I fill in "orientation" with "Vertical"
-	    And I press "submit"rack
+	    And I press "submit"
 	    Then I should see "Ship placed"
