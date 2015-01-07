@@ -21,16 +21,26 @@ class BattleShips < Sinatra::Base
     erb :new_game
   end
 
-  post '/form' do 
+  post '/form' do # rename to register
     @player1_name = (session[:player1] = params[:player1])
     @player2_name = (session[:player2] = params[:player2])
     erb :new_game
   end
 
+  post '/set_ships' do 
+    session[:ship] = params[:ship]
+    session[:coord] = params[:coord]
+    session[:orientation] = params[:orientation]
+    redirect "/setup_game"
+  end
+
+
   get '/setup_game' do # rename to play game
     @game = Game.new
     setup(@player1, session[:player1])
     setup(@player2, session[:player2])
+    puts params
+    @ship = @fleet1.select { |ship| ship.name == @ship }
     erb :setup_game
   end
 

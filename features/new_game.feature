@@ -43,7 +43,7 @@ Feature: Starting new game
     And I fill in "player2" with "Danielle"
     And I press "submit"
     And I follow "Start Your Game!"
-    Then I should see "HERP DERP"
+    Then I should see "Welcome to the game!"
 
 
 

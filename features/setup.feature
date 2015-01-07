@@ -17,10 +17,23 @@ Feature: Setting up a game
         Then I should see "Welcome to the game!"
 
     Scenario: List Fleet 
-    	Given I am on /new_game
+        Given I am on /new_game
 	    When I fill in "player1" with "Jake" 
 	    And I press "submit"
 	    And I fill in "player2" with "Danielle"
 	    And I press "submit"
 	    And I follow "Start Your Game!"
         Then I should see "Aircraft Carrier, size: 5"
+
+    Scenario: Place Ship
+    	Given I am on /new_game
+	    When I fill in "player1" with "Jake" 
+	    And I press "submit"
+	    And I fill in "player2" with "Danielle"
+	    And I press "submit"
+	    And I follow "Start Your Game!"
+	    And I fill in "ship" with "Battleship"
+	    And I fill in "coord" with "A1"
+	    And I fill in "orientation" with "Vertical"
+	    And I press "submit"rack
+	    Then I should see "Ship placed"
