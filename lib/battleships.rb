@@ -1,21 +1,25 @@
 require 'sinatra/base'
+require 'game'
 
 class BattleShips < Sinatra::Base
 
   set :views, File.expand_path('../../views', __FILE__)
+
+
+  # routes 
 
   get '/' do
     erb :index
   end
 
   get '/new_game' do 
+    @game = Game.new
     erb :new_game
   end
 
   post '/form' do 
     @player1 = params[:player1]
     @player2 = params[:player2]
-    puts params.inspect
     erb :new_game
   end
 
