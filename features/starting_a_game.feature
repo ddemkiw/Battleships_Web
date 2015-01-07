@@ -20,3 +20,14 @@ Feature: Starting the game
     And I press "submit"
   	Then I should see "Player 1, enter your name:"
 
+  Scenario: Register Player 2
+    Given I am on /new_game
+    When I fill in "player1" with "Jake" 
+    And I press "submit"
+    And I fill in "player2" with "Danielle"
+    And I press "submit"
+    Then I should see "Start Your Game!"
+
+
+
+
