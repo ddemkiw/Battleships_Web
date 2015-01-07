@@ -41,16 +41,18 @@ class BattleShips < Sinatra::Base
 
   get '/setup_game' do # rename to play game
     @game = Game.new
+    p @game
     setup(@player1, session[:player1])
     setup(@player2, session[:player2])
     @ship = @fleet1.select { |ship| ship.name.first == session[:ship]  }
     puts @ship.inspect
     @coord = session[:coord]
-    x = @coord.to_s.to_sym
-    if @ship
-      p @board1.place(@ship, x)
+    @coord = @coord.to_s.to_sym
+    p @ship
+    if !@ship.empty? && @board1.place(@ship, @coord)
+      @placed = "Ship placed"
     end
-
+    p @board1
     erb :setup_game
   end
 
