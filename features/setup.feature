@@ -14,4 +14,13 @@ Feature: Setting up a game
 	    And I fill in "player2" with "Danielle"
 	    And I press "submit"
 	    And I follow "Start Your Game!"
-        Then I should see "Welcome to the game, Jake"
+        Then I should see "Welcome to the game!"
+
+    Scenario: List Fleet 
+    	Given I am on /new_game
+	    When I fill in "player1" with "Jake" 
+	    And I press "submit"
+	    And I fill in "player2" with "Danielle"
+	    And I press "submit"
+	    And I follow "Start Your Game!"
+        Then I should see "Aircraft Carrier, size: 5"
