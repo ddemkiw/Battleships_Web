@@ -10,26 +10,13 @@ Feature: Starting new game
 
   Scenario: Register Player 
   	Given I am on /new_game
-  	When I fill in "player1" with "Jake" 
+  	When I fill in "player" with "Jake" 
     And I press "submit"
-  	Then I should see "Player1 has been registered"
+  	Then I should see "Welcome to the game!"
 
   Scenario: Unable to Register Player 
   	Given I am on /new_game
-  	When I fill in "player1" with ""
+  	When I fill in "player" with ""
     And I press "submit"
-  	Then I should see "Player 1, enter your name:"
-
-
-
-  Scenario: Once complete, go to start your game
-    Given I am on /new_game
-    When I fill in "player1" with "Jake" 
-    And I press "submit"
-    And I fill in "player2" with "Danielle"
-    And I press "submit"
-    And I follow "Start Your Game!"
-    Then I should see "Welcome to the game!"
-
-
+  	Then I should see "Player enter your name:"
 

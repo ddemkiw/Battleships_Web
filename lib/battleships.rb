@@ -28,10 +28,16 @@ class BattleShips < Sinatra::Base
   post '/form' do # rename to register
     # session[:player_name] = 
     name = params[:player]
-    @player = Player.new
-    @player.name = name
-    session[:player_id] = @player.object_id
-    p session.inspect
+    if name.nil? || name.empty?
+      redirect '/new_game'
+    else
+      @player = Player.new
+      @player.name = name
+      session[:me] = name
+      session[:player_id] = @player.object_id
+      p session.inspect
+      redirect '/setup_game'
+    end
     erb :new_game
   end
 

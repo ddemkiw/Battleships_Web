@@ -5,4 +5,7 @@
   	<form action="/form" method="post">
   	<input type="text" name="player">
   	<button type="submit">submit</button>
+  <% if @player %>
+  <%= session[:me] %>
+  <% end %>
 </div>
