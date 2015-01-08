@@ -23,7 +23,7 @@ Feature: Setting up a game
 	    And I fill in "player2" with "Danielle"
 	    And I press "submit"
 	    And I follow "Start Your Game!"
-        Then I should see "Aircraft Carrier, size: 5"
+        Then I should see "Battleship, size: 4"
 
     Scenario: Place Ship
     	Given I am on /new_game
@@ -36,4 +36,5 @@ Feature: Setting up a game
 	    And I fill in "coord" with "A1"
 	    And I fill in "orientation" with "Vertical"
 	    And I press "submit"
+	    And I am on /setup_game
 	    Then I should see "Ship placed"

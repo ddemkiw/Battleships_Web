@@ -25,7 +25,7 @@ class Game
 	end
 
 	def ready?
-		has_two_players? and both_players_have_boards? and both_players_have_five_ships?
+		has_two_players? and both_players_have_boards? and both_players_have_ships?
 	end
 
 	def turn 
@@ -36,8 +36,8 @@ class Game
 
 private 
 
-	def both_players_have_five_ships?
-		(player1.board.ships_count == 5) and (player2.board.ships_count == 5) 
+	def both_players_have_ships?
+		(player1.board.ships_count == 1) and (player2.board.ships_count == 1) 
 	end
 
 	def both_players_have_boards?

@@ -16,4 +16,7 @@ Coordinate: <input type="text" name="coord">
 <form action="/set_ships" method="post">
 Orientation: <input type="text" name="orientation">
 <button type="submit">submit</button>
-<p><%= @placed %></p>
+<p><%if @placed %></p>
+<p> Ship Placed </p>
+<p><% end %></p>
+
