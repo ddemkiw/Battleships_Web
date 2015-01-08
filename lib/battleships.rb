@@ -47,9 +47,10 @@ class BattleShips < Sinatra::Base
   #convert orientation to symbo (possible drop down)
   #use add_ship function from game  
   post '/set_ships' do 
-    session[:ship] = params[:ship]
-    session[:coord] = params[:coord]
-    session[:orientation] = params[:orientation]
+    player = ObjectSpace._id2ref(session[:player_id])
+    p player.inspect
+    p player.board.inspect
+    player.board.place(Ship.battleship, params[:coord].to_sym, params[:orientation].to_sym)
     redirect "/setup_game"
   end
 
@@ -58,53 +59,13 @@ class BattleShips < Sinatra::Base
     session[:board] = (Board.new(Cell)).object_id
     session[:fleet] = [Ship.battleship].object_id
     player = ObjectSpace._id2ref(session[:player_id])
-    player.board = session[:board]
+    player.board = ObjectSpace._id2ref(session[:board])
     p session.inspect
     erb :setup_game 
   end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
-
-  private
-
-    # def setup(name)
-    #   @player1 = Player.new
-    #   @player2 = Player.new
-    #   @player1.name = name
-    #   @player2.name = name
-    #   @fleet1 = [Ship.battleship]
-    #   @fleet2 = [Ship.battleship]
-    #   @board1 = Board.new(Cell)
-    #   @board2 = Board.new(Cell)
-    #   GAME.add_player(@player1)
-    #   GAME.add_player(@player2)
-    #   @player1.board = @board1
-    #   @player2.board = @board2
-    # end 
-
-    # def place_p2_ships
-    #   @p2_find_ship = @fleet2.select { |ship| ship.name.first == session[:ship]  }
-    #   @coord = session[:coord]
-    #   @coord = @coord.to_s.to_sym
-
-    #   if !@p2_find_ship.empty? && @board2.place(@p2_find_ship, @coord)
-    #     @placed = true
-    #     @fleet1.delete(@p2_find_ship)
-    #   end
-    # end 
-
-    # def place_p1_ships
-    #   @p1_find_ship = @fleet1.select { |ship| ship.name.first == session[:ship]  }
-    #   @coord = session[:coord]
-    #   @coord = @coord.to_s.to_sym
-          
-    #   if !@p1_find_ship.empty? && @board1.place(@p1_find_ship, @coord)
-    #     @placed = true
-    #     @fleet1.delete(@p1_find_ship)
-    #   end  
-    # end
-
   
 
 end
