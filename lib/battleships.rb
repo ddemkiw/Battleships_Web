@@ -35,7 +35,6 @@ class BattleShips < Sinatra::Base
       @player.name = name
       session[:me] = name
       session[:player_id] = @player.object_id
-      p session.inspect
       GAME.add_player(@player)
       redirect '/setup_game'
     end
@@ -48,19 +47,20 @@ class BattleShips < Sinatra::Base
   #use add_ship function from game  
   post '/set_ships' do 
     player = ObjectSpace._id2ref(session[:player_id])
-    p player.inspect
+    player.board.place(Ship.battleship, params[:b_coord].to_sym, params[:b_orientation].to_sym)
+    player.board.place(Ship.battleship, params[:ac_coord].to_sym, params[:ac_orientation].to_sym)
+    player.board.place(Ship.battleship, params[:d_coord].to_sym, params[:d_orientation].to_sym)
+    player.board.place(Ship.battleship, params[:s_coord].to_sym, params[:s_orientation].to_sym)
+    player.board.place(Ship.battleship, params[:p_coord].to_sym, params[:p_orientation].to_sym)
     p player.board.inspect
-    player.board.place(Ship.battleship, params[:coord].to_sym, params[:orientation].to_sym)
     redirect "/setup_game"
   end
 
 
   get '/setup_game' do # rename to play game
     session[:board] = (Board.new(Cell)).object_id
-    session[:fleet] = [Ship.battleship].object_id
     player = ObjectSpace._id2ref(session[:player_id])
     player.board = ObjectSpace._id2ref(session[:board])
-    p session.inspect
     erb :setup_game 
   end
 

@@ -1,18 +1,67 @@
 <p>Welcome to the game!</p>
 <p> Each player has a fleet of 5 ships including </p>
 
+
 <form action="/set_ships" method="post">
-<label>Aircraft Carrier: </label>
+<label>Battleship: </label>
 <input type="text" name="coord">
 <select name="orientation">
 <option value="vertically">vertically</option>
 <option value="horizontally">horizontally</option>
 </select>
+
+
+<div>
+<label>Battleship: </label>
+<input type="text" name="b_coord">
+<select name="b_orientation">
+<option value="vertically">vertically</option>
+<option value="horizontally">horizontally</option>
+</select>
+
+</div>
+
+<div>
+<label>Aircraft Carrier: </label>
+<input type="text" name="ac_coord">
+<select name="ac_orientation">
+<option value="vertically">vertically</option>
+<option value="horizontally">horizontally</option>
+</select>
+
+</div>
+
+<div>
+<label>Destroyer: </label>
+<input type="text" name="d_coord">
+<select name="d_orientation">
+<option value="vertically">vertically</option>
+<option value="horizontally">horizontally</option>
+</select>
+
+</div>
+
+<div>
+<label>Submarine: </label>
+<input type="text" name="s_coord">
+<select name="s_orientation">
+<option value="vertically">vertically</option>
+<option value="horizontally">horizontally</option>
+</select>
+
+</div>
+
+<div>
+<label>Patrol Boat: </label>
+<input type="text" name="p_coord">
+<select name="p_orientation">
+<option value="vertically">vertically</option>
+<option value="horizontally">horizontally</option>
+</select>
+</div>
+
 <button type="submit">submit</button>
+
 </form>
 
-
-<p><% @placed %></p>
-<p> Ship Placed </p>
-<p><%  %></p> -->
 
