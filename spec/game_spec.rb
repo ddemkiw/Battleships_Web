@@ -6,6 +6,7 @@ describe Game do
 	let(:player1){double :player, board: board, has_board?: true }
 	let(:player2){double :player, board: board2, has_board?: true } 
 
+# changed 
 	it "can have players added" do 
 		game.add_player(player1)
 		expect(game.player1).to eq player1
