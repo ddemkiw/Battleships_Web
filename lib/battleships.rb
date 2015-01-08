@@ -36,6 +36,7 @@ class BattleShips < Sinatra::Base
       session[:me] = name
       session[:player_id] = @player.object_id
       p session.inspect
+      GAME.add_player(@player)
       redirect '/setup_game'
     end
     erb :new_game
@@ -54,17 +55,12 @@ class BattleShips < Sinatra::Base
 
 
   get '/setup_game' do # rename to play game
-    
-    setup(session[:player1])
-    setup(session[:player2])
-    erb :setup_game
-
-    # if @fleet1.empty?
-    #   place_p2_ships
-    # else 
-    #   place_p1_ships      
-    # end 
-
+    session[:board] = (Board.new(Cell)).object_id
+    session[:fleet] = [Ship.battleship].object_id
+    player = ObjectSpace._id2ref(session[:player_id])
+    player.board = session[:board]
+    p session.inspect
+    erb :setup_game 
   end
 
   # start the server if ruby file executed directly
@@ -72,42 +68,42 @@ class BattleShips < Sinatra::Base
 
   private
 
-    def setup(name)
-      @player1 = Player.new
-      @player2 = Player.new
-      @player1.name = name
-      @player2.name = name
-      @fleet1 = [Ship.battleship]
-      @fleet2 = [Ship.battleship]
-      @board1 = Board.new(Cell)
-      @board2 = Board.new(Cell)
-      GAME.add_player(@player1)
-      GAME.add_player(@player2)
-      @player1.board = @board1
-      @player2.board = @board2
-    end 
+    # def setup(name)
+    #   @player1 = Player.new
+    #   @player2 = Player.new
+    #   @player1.name = name
+    #   @player2.name = name
+    #   @fleet1 = [Ship.battleship]
+    #   @fleet2 = [Ship.battleship]
+    #   @board1 = Board.new(Cell)
+    #   @board2 = Board.new(Cell)
+    #   GAME.add_player(@player1)
+    #   GAME.add_player(@player2)
+    #   @player1.board = @board1
+    #   @player2.board = @board2
+    # end 
 
-    def place_p2_ships
-      @p2_find_ship = @fleet2.select { |ship| ship.name.first == session[:ship]  }
-      @coord = session[:coord]
-      @coord = @coord.to_s.to_sym
+    # def place_p2_ships
+    #   @p2_find_ship = @fleet2.select { |ship| ship.name.first == session[:ship]  }
+    #   @coord = session[:coord]
+    #   @coord = @coord.to_s.to_sym
 
-      if !@p2_find_ship.empty? && @board2.place(@p2_find_ship, @coord)
-        @placed = true
-        @fleet1.delete(@p2_find_ship)
-      end
-    end 
+    #   if !@p2_find_ship.empty? && @board2.place(@p2_find_ship, @coord)
+    #     @placed = true
+    #     @fleet1.delete(@p2_find_ship)
+    #   end
+    # end 
 
-    def place_p1_ships
-      @p1_find_ship = @fleet1.select { |ship| ship.name.first == session[:ship]  }
-      @coord = session[:coord]
-      @coord = @coord.to_s.to_sym
+    # def place_p1_ships
+    #   @p1_find_ship = @fleet1.select { |ship| ship.name.first == session[:ship]  }
+    #   @coord = session[:coord]
+    #   @coord = @coord.to_s.to_sym
           
-      if !@p1_find_ship.empty? && @board1.place(@p1_find_ship, @coord)
-        @placed = true
-        @fleet1.delete(@p1_find_ship)
-      end  
-    end
+    #   if !@p1_find_ship.empty? && @board1.place(@p1_find_ship, @coord)
+    #     @placed = true
+    #     @fleet1.delete(@p1_find_ship)
+    #   end  
+    # end
 
   
 

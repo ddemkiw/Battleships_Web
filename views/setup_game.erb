@@ -2,21 +2,17 @@
 <p> Player 1 is : <%= session[:player1] %></p>
 <p> Player 2 is : <%= session[:player2] %></p>
 <p> Each player has a fleet of 5 ships including </p>
-<ul>
-	<% @fleet1.each do |ship| %>	
-	<li><%= "#{ship.name.first}, size: #{ship.size}" %></li>
-	<% end %>
-</ul> 
+<!--  -->
 
 
-<form action="/set_ships" method="post">
+<!-- <form action="/set_ships" method="post">
 Ship: <input type="text" name="ship">
 <form action="/set_ships" method="post">
 Coordinate: <input type="text" name="coord">
 <form action="/set_ships" method="post">
 Orientation: <input type="text" name="orientation">
 <button type="submit">submit</button>
-<p><%if @placed %></p>
+<p><% @placed %></p>
 <p> Ship Placed </p>
-<p><% end %></p>
+<p><%  %></p> -->
 
