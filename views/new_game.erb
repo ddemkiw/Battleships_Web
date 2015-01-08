@@ -1,23 +1,7 @@
 <!-- we are going to take player 1's name. if this is done, set player 2 name.-->
 
 <div>
-
-  <% if @player1_name.nil? || @player1_name.empty? %>
-    Player 1, enter your name:
   	<form action="/form" method="post">
-  	<input type="text" name="player1">
+  	<input type="text" name="player">
   	<button type="submit">submit</button>
-  <% elsif @player2_name.nil? || @player2_name.empty?%>
-    <p>Player1 has been registered</p>
-    Input player 2's name:
-  	<form action="/form" method="post">
-    <input type="text" name="player2" value=<% @player2_name %>>
-    <input type="hidden" name="player1" value=<%= @player1_name %>>
-    <button type="submit">submit</button>
-    </form>
-  <% else %> 
-    <a href="/setup_game">Start Your Game!</a>
-  <% end %>
-
-
 </div>

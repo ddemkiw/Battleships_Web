@@ -23,16 +23,22 @@ class BattleShips < Sinatra::Base
     erb :new_game
   end
 
+  # we are giving each player a name and setting it in session (cookies)
+
   post '/form' do # rename to register
-    @player1_name = (session[:player1] = params[:player1])
-    @player2_name = (session[:player2] = params[:player2])
+    # session[:player_name] = 
+    name = params[:player]
+    @player = Player.new
+    @player.name = name
+    session[:player_id] = @player.object_id
+    p session.inspect
     erb :new_game
   end
 
-#convert ship from string to object
-#coords from string to symbo
-#convert orientation to symbo (possible drop down)
-#use add_ship function from game  
+  #convert ship from string to object
+  #coords from string to symbo
+  #convert orientation to symbo (possible drop down)
+  #use add_ship function from game  
   post '/set_ships' do 
     session[:ship] = params[:ship]
     session[:coord] = params[:coord]
@@ -47,11 +53,12 @@ class BattleShips < Sinatra::Base
     setup(session[:player2])
     erb :setup_game
 
-    if @fleet1.empty?
-      place_p2_ships
-    else 
-      place_p1_ships      
-    end 
+    # if @fleet1.empty?
+    #   place_p2_ships
+    # else 
+    #   place_p1_ships      
+    # end 
+
   end
 
   # start the server if ruby file executed directly
