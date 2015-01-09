@@ -47,11 +47,11 @@ class BattleShips < Sinatra::Base
   #use add_ship function from game  
   post '/set_ships' do 
     player = ObjectSpace._id2ref(session[:player_id])
-    player.board.place(Ship.battleship, params[:b_coord].to_sym, params[:b_orientation].to_sym)
-    player.board.place(Ship.battleship, params[:ac_coord].to_sym, params[:ac_orientation].to_sym)
-    player.board.place(Ship.battleship, params[:d_coord].to_sym, params[:d_orientation].to_sym)
-    player.board.place(Ship.battleship, params[:s_coord].to_sym, params[:s_orientation].to_sym)
-    player.board.place(Ship.battleship, params[:p_coord].to_sym, params[:p_orientation].to_sym)
+    player.board.place(Ship.battleship, params[:coord].to_sym, params[:orientation].to_sym)
+    player.board.place(Ship.aircraft_carrier, params[:ac_coord].to_sym, params[:ac_orientation].to_sym)
+    player.board.place(Ship.destroyer, params[:d_coord].to_sym, params[:d_orientation].to_sym)
+    player.board.place(Ship.submarine, params[:s_coord].to_sym, params[:s_orientation].to_sym)
+    player.board.place(Ship.patrol_boat, params[:p_coord].to_sym, params[:p_orientation].to_sym)
     p player.board.inspect
     redirect "/setup_game"
   end
