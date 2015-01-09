@@ -34,10 +34,9 @@ class Game
 
 	alias :current_player :turn
 
-
 # changed both_players_have_ships method from 5 ships to 1 ship for mvp web
 	def both_players_have_ships?
-		(player1.board.ships_count == 1) and (player2.board.ships_count == 1) 
+		(player1.board.ships_count == 5) and (player2.board.ships_count == 5) 
 	end
 
 	def both_players_have_boards?

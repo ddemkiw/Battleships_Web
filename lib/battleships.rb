@@ -40,10 +40,22 @@ class BattleShips < Sinatra::Base
     erb :new_game
   end
 
+  get '/waiting' do 
+    if game.player2 && game.both_players_have_ships?
+      redirect '/start' 
+    else
+      erb :waiting
+    end
+  end
+
   post '/set_ships' do 
     player = ObjectSpace._id2ref(session[:player_id])
-    player.board.place(Ship.battleship, params[:coord].to_sym, params[:orientation].to_sym) 
-    if game.player2
+    player.board.place(Ship.battleship, params[:coord].to_sym, params[:orientation].to_sym)
+    player.board.place(Ship.aircraft_carrier, params[:ac_coord].to_sym, params[:ac_orientation].to_sym)
+    player.board.place(Ship.destroyer, params[:d_coord].to_sym, params[:d_orientation].to_sym)
+    player.board.place(Ship.submarine, params[:s_coord].to_sym, params[:s_orientation].to_sym)
+    player.board.place(Ship.patrol_boat, params[:p_coord].to_sym, params[:p_orientation].to_sym)
+     if game.player2
       redirect "/start"
     else
       redirect "/waiting" 
@@ -57,7 +69,6 @@ class BattleShips < Sinatra::Base
       erb :waiting
     end
   end
-
 
   get '/setup_game' do # rename to play game
     session[:board] = (Board.new(Cell)).object_id
