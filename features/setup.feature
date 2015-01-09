@@ -8,23 +8,24 @@ Feature: Setting up a game
 		And I am on /setup_game
     	Then I should see "Welcome to the game" 
 
- 
 
-    Scenario: List Fleet 
+    Scenario: Setup Ships
         Given I have registered my name 
         And I am on /setup_game
         Then I should see "Battleship"
 
     Scenario: Place Ship
-    	Given I am on /new_game
-	    When I fill in "player1" with "Jake" 
-	    And I press "submit"
-	    And I fill in "player2" with "Danielle"
-	    And I press "submit"
-	    And I follow "Start Your Game!"
-	    And I fill in "ship" with "Battleship"
-	    And I fill in "coord" with "A1"
-	    And I fill in "orientation" with "Vertical"
+    	Given I have registered my name 
+	    And i fill in "coord" with "A1"
+	    And I fill in "orientation" with "vertically"
+	    And i fill in "ac_coord" with "A1"
+	    And I fill in "ac_orientation" with "vertically"
+	    And i fill in "d_coord" with "A1"
+	    And I fill in "d_orientation" with "vertically"
+	    And i fill in "s_coord" with "A1"
+	    And I fill in "s_orientation" with "vertically"
+	    And i fill in "p_coord" with "A1"
+	    And I fill in "p_orientation" with "vertically"
 	    And I press "submit"
 	    And I am on /setup_game
-	    Then I should see "Ship placed"
+	    Then I should see "Waiting for second player."
