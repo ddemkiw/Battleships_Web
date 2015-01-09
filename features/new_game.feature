@@ -16,6 +16,6 @@ Feature: Starting new game
 
   Scenario: Unable to Register Player 
     Given I am on /new_game
-    And I fill in "coord" with ""
+    And I fill in "player" with ""
     And I press "submit"
     Then I should see "Player enter your name:"
