@@ -85,6 +85,18 @@ class BattleShips < Sinatra::Base
     erb :start
   end
 
+  post '/hit' do
+    player = ObjectSpace._id2ref(session[:player_id])
+    p player
+    p params[:shoot]
+    if game.player1 == player 
+      p game.player2.board.shoot_at(params[:shoot].to_sym)
+    else
+      p game.player1.board.shoot_at(params[:shoot].to_sym)
+    end
+    erb :start
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
   
