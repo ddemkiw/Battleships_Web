@@ -1,5 +1,5 @@
-Given(/^there is a game with a player called "(.*?)"/) do |name|
-  visit "/new_game"
-  fill_in("player1", :with => name)
+Given(/^I have registered my name$/) do
+  visit path_to("/new_game")
+  fill_in("player", :with => "Jake")
   click_button("submit")
 end
