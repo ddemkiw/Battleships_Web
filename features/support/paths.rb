@@ -22,6 +22,12 @@ module NavigationHelpers
     when /set_ships/
       '/set_ships'
 
+    when /start/
+      '/start'
+
+    when /waiting/
+      '/waiting'
+
 
 
     # Add more mappings here.

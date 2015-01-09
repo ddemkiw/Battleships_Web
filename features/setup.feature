@@ -4,7 +4,8 @@ Feature: Setting up a game
 	I want to set up my ships
 
 	Scenario: Set up Game
-		Given I am on /setup_game
+		Given I have registered my name 
+		And I am on /setup_game
     	Then I should see "Welcome to the game" 
 
     Scenario: Greeting a player

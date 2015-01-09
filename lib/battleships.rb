@@ -11,7 +11,7 @@ class BattleShips < Sinatra::Base
 
   set :views, File.expand_path('../../views', __FILE__)
 
-   GAME = Game.new
+  game = Game.new
 
   # routes 
 
@@ -26,7 +26,6 @@ class BattleShips < Sinatra::Base
   # we are giving each player a name and setting it in session (cookies)
 
   post '/form' do # rename to register
-    # session[:player_name] = 
     name = params[:player]
     if name.nil? || name.empty?
       redirect '/new_game'
@@ -35,23 +34,28 @@ class BattleShips < Sinatra::Base
       @player.name = name
       session[:me] = name
       session[:player_id] = @player.object_id
-      p session.inspect
-      GAME.add_player(@player)
+      game.add_player(@player)
       redirect '/setup_game'
     end
     erb :new_game
   end
 
-  #convert ship from string to object
-  #coords from string to symbo
-  #convert orientation to symbo (possible drop down)
-  #use add_ship function from game  
   post '/set_ships' do 
     player = ObjectSpace._id2ref(session[:player_id])
-    p player.inspect
-    p player.board.inspect
-    player.board.place(Ship.battleship, params[:coord].to_sym, params[:orientation].to_sym)
-    redirect "/setup_game"
+    player.board.place(Ship.battleship, params[:coord].to_sym, params[:orientation].to_sym) 
+    if game.player2
+      redirect "/start"
+    else
+      redirect "/waiting" 
+    end
+  end
+
+  get '/waiting' do 
+    if game.player2 && game.both_players_have_ships?
+      redirect '/start' 
+    else
+      erb :waiting
+    end
   end
 
 
@@ -60,12 +64,17 @@ class BattleShips < Sinatra::Base
     session[:fleet] = [Ship.battleship].object_id
     player = ObjectSpace._id2ref(session[:player_id])
     player.board = ObjectSpace._id2ref(session[:board])
-    p session.inspect
     erb :setup_game 
+  end
+
+  get "/start" do 
+    if game.ready?
+      puts "ready"
+    end
+    erb :start
   end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
   
-
 end

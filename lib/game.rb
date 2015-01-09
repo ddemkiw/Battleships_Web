@@ -34,7 +34,6 @@ class Game
 
 	alias :current_player :turn
 
-private 
 
 # changed both_players_have_ships method from 5 ships to 1 ship for mvp web
 	def both_players_have_ships?
