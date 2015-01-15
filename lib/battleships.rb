@@ -89,8 +89,14 @@ class BattleShips < Sinatra::Base
     player = ObjectSpace._id2ref(session[:player_id])
     p player
     p params[:shoot]
+   
     if game.player1 == player 
-      p game.player2.board.shoot_at(params[:shoot].to_sym)
+      begin 
+        p game.player2.board.shoot_at(params[:shoot].to_sym)
+      rescue  RuntimeError => e
+        @warning
+        erb :start
+      end
     else
       p game.player1.board.shoot_at(params[:shoot].to_sym)
     end
