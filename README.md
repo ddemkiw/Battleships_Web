@@ -1,10 +1,42 @@
-#BattleShips
+Title
+=======================
 
-The game is ready to play when theres are two players initialized with a board each and each board has 5 ships placed. 
+## Synopsis
 
-By default it is player1's go first and after each shot it will switch the turns until there is a winner. 
+TODO: Enter a description of your project here.
 
-A game_setup.rb file has been added which sets up the game to a ready state placeing each ship from colums A through to E vertically. 
-	
-=======
-test jake 
+![NAME_OF_IMAGE](http://ENTER_URL)
+
+## Technologies Used
+
+- LANGUAGE_ONE
+- LANGUAGE_TWO
+- FRAMEWORK
+- TESTING SUITES
+
+## Job List
+
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+
+## Favourite Code Snippet
+
+~~~
+ TODO: paste code here
+~~~
+
+## Collaborators
+
+- NAME_ONE (http://www.github.com/USERNAME)
+- NAME_TWO (http://www.github.com/USERNAME)
+
+## Still to complete/refactor
+
+- [ ]
+- [ ]
+
+## Takeaway
+
+TODO: Enter a personal reflection and/or things you learnt
