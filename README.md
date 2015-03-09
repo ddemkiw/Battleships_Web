@@ -12,6 +12,7 @@ http://en.wikipedia.org/wiki/Battleship_%28game%29
 - Ruby
 - Sinatra
 - Rspec
+- cucumber
 
 
 ## Collaborators
