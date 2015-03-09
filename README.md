@@ -8,7 +8,7 @@ A small ruby/sinatra game for two players.
 
 TODO: Enter a description of your project here.
 
-![NAME_OF_IMAGE](http://ENTER_URL)
+![battleship](https://github.com/ddemkiw/Battleships_Web/blob/master/battleships.jpg)
 
 ## Technologies Used
 
