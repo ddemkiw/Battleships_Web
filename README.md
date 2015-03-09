@@ -1,7 +1,10 @@
-Title
+Battleships_Web
 =======================
 
 ## Synopsis
+http://en.wikipedia.org/wiki/Battleship_%28game%29
+
+A small ruby/sinatra game for two players. 
 
 TODO: Enter a description of your project here.
 
@@ -9,33 +12,15 @@ TODO: Enter a description of your project here.
 
 ## Technologies Used
 
-- LANGUAGE_ONE
-- LANGUAGE_TWO
-- FRAMEWORK
-- TESTING SUITES
+- Ruby
+- Sinatra
+- Rspec
 
-## Job List
-
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-
-## Favourite Code Snippet
-
-~~~
- TODO: paste code here
-~~~
 
 ## Collaborators
 
-- NAME_ONE (http://www.github.com/USERNAME)
-- NAME_TWO (http://www.github.com/USERNAME)
+- Jacob Mitchinson (https://github.com/jacobmitchinson)
 
-## Still to complete/refactor
-
-- [ ]
-- [ ]
 
 ## Takeaway
 
